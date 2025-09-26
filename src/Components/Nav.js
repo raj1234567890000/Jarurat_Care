@@ -9,7 +9,6 @@ export default function Nav() {
 
   const handleClose = () => setOpen(false);
 
-
   const menuVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
@@ -17,19 +16,20 @@ export default function Nav() {
   };
 
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
-      <div className="flex justify-between items-center px-6 py-4 ">
+    <nav className="w-full h-20 bg-gradient-to-r from-green-200 via-green-100 to-blue-200 shadow-md fixed top-0 left-0 z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 h-full">
+        {/* Logo */}
         <motion.img
           src={logo}
           alt="Jarurat Care Logo"
-          className="w-30 h-20 object-contain rounded-full"
+          className="w-20 h-20 object-cover rounded-full"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         />
 
-    
-        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-10 text-gray-700 font-medium text-lg">
           {["Home", "Patients", "About Us", "ViewAppointments"].map(
             (item, i) => (
               <motion.li
@@ -57,7 +57,7 @@ export default function Nav() {
           )}
         </ul>
 
-    
+        {/* Mobile Button */}
         <button
           className="md:hidden text-gray-700"
           onClick={() => setOpen(!open)}
@@ -75,7 +75,7 @@ export default function Nav() {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="md:hidden flex flex-col items-center bg-white shadow-lg py-6 space-y-6 font-medium text-gray-700"
+            className="md:hidden flex flex-col items-center w-full min-h-[250px] bg-gradient-to-b from-green-100 via-white to-blue-100 shadow-lg py-6 space-y-6 font-medium text-gray-700 text-lg"
           >
             <Link to="/" onClick={handleClose}>
               <li className="hover:text-blue-600 cursor-pointer">Home</li>
